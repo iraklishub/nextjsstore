@@ -1,0 +1,6 @@
+export { default as Header } from './header'
+export { default as HeaderBanner } from './header-banner'
+export { default as Footer } from './footer'
+export { default as CategoriesSlider } from './categories-slider'
+export { default as CollectionBanner } from './collection-banner'
+export { default as WeeksHighlights } from './weeks-highlights'

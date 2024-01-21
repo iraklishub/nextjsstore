@@ -1,7 +1,11 @@
-import { Inter } from 'next/font/google'
-import '@/style/globals.css'
+import { Poppins } from 'next/font/google'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
+import { ReduxProvider } from '../redux/provider'
+import '@/src/style/globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import { Header, Footer } from '@/src/layout'
+
+const poppins = Poppins({ weight: '400', subsets: ['latin'], display: 'swap' })
 
 export const metadata = {
   title: 'softx',
@@ -11,7 +15,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={poppins.className}>
+        <ReduxProvider>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <div className="flex flex-col items-center">
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </AppRouterCacheProvider>
+        </ReduxProvider>
+      </body>
     </html>
   )
 }
