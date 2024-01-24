@@ -15,8 +15,12 @@ const Footer = () => {
         <DividerIcon className="mt-4" />
         <nav className="mt-5 text-[#41587B] text-lg">
           <ul>
-            <li>product</li>
-            <li className="mt-4">categories</li>
+            <li>
+              <Link href="/">product</Link>
+            </li>
+            <li className="mt-4">
+              <Link href="/">categories</Link>
+            </li>
           </ul>
         </nav>
         <div className="mt-16 flex items-center">
@@ -32,14 +36,14 @@ const Footer = () => {
         <span className="text-xl">Payments</span>
         <DividerIcon className="mt-4" />
         <div className="mt-10 flex items-center">
-          <Link href="https://instagram.com">
-            <Image src={mastercardLogo} width={50} height={30} alt="iglogo" />
+          <Link href="/">
+            <Image src={mastercardLogo} width={50} height={30} alt="mastercardlogo" />
           </Link>
-          <Link href="https://facebook.com" className="ml-5">
-            <Image src={visaLogo} width={50} height={30} alt="fblogo" />
+          <Link href="/" className="ml-5">
+            <Image src={visaLogo} width={50} height={30} alt="visalogo" />
           </Link>
-          <Link href="https://instagram.com" className="ml-5">
-            <Image src={amexpressLogo} width={50} height={23} alt="iglogo" />
+          <Link href="/" className="ml-5">
+            <Image src={amexpressLogo} width={50} height={23} alt="amexpresslogo" />
           </Link>
         </div>
       </div>

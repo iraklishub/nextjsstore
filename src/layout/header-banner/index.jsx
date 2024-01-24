@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import headerBannerImage from '@/public/images/headerbanner.png'
 import hangerIcon from '@/public/images/hangericon.png'
 import { Button } from '@/src/components'
@@ -15,9 +16,16 @@ const HeaderBanner = ({ className }) => {
           Start The Day <br />
           With Closet.
         </p>
-        <Button type="button" variant="secondary" className="mt-6">
-          Discovery our collection
-        </Button>
+        <Link
+          href={{
+            pathname: '/products',
+            query: { category: '' }
+          }}
+        >
+          <Button type="button" variant="secondary" className="mt-6">
+            Discovery our collection
+          </Button>
+        </Link>
       </div>
     </section>
   )

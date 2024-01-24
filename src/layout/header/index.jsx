@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Roboto } from 'next/font/google'
 import Image from 'next/image'
 import logo from '@/public/images/logo.png'
-import { ProfileIcon, CartIcon } from '@/src/components'
+import HeaderIconsSection from './icons-section'
 
 const roboto = Roboto({ weight: '400', subsets: ['latin'], display: 'swap' })
 
@@ -25,16 +25,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="flex items-center">
-        <button type="button" className="h-fit">
-          <ProfileIcon />
-        </button>
-        <button type="button" className="ml-4 h-fit">
-          <CartIcon />
-        </button>
-        {false && <button type="button">heart</button>}
-        {/* todo favorites page/hearticon */}
-      </div>
+      <HeaderIconsSection />
     </header>
   )
 }
