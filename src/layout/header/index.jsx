@@ -15,7 +15,14 @@ const Header = () => {
       <nav className={roboto.className}>
         <ul className="flex text-[#272727]">
           <li className="w-[85px] h-[25px] text-center">
-            <Link href="/">Discovery</Link>
+            <Link
+              href={{
+                pathname: '/products',
+                query: { category: '' }
+              }}
+            >
+              Discovery
+            </Link>
           </li>
           <li className="w-[85px] h-[25px] text-center">
             <Link href="/">About</Link>

@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import { AsideCategories, ProductsList } from '@/src/layout'
+import { priceFilterConstants } from '@/src/utils'
 
-export default function Products({ params }) {
-  const minPrice = 0
-  const maxPrice = 1500
+export default function Products() {
+  const { minPrice, maxPrice } = priceFilterConstants
   const [priceValue, setPriceValue] = useState([minPrice, maxPrice])
 
   return (

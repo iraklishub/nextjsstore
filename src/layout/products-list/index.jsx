@@ -6,7 +6,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { setProducts } from '@/src/redux/features/products-slice'
-import { ProductCard, LoadingSpinner, PagePagination } from '@/src/components'
+import { ProductCard, LoadingSpinner, PagePagination, ToggleFavorite } from '@/src/components'
 
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
@@ -93,17 +93,19 @@ const ProductsList = ({ priceValue }) => {
                 const { id, image, price, rating, title } = product
 
                 return (
-                  <Link href={`${pathname}/${id}`} key={id}>
-                    <ProductCard
-                      id={id}
-                      title={title}
-                      image={image}
-                      price={price}
-                      orders={rating.count}
-                      isFavorite={false} // todo
-                      className=""
-                    />
-                  </Link>
+                  <div key={id} className="relative">
+                    <ToggleFavorite id={id} />
+                    <Link href={`${pathname}/${id}`}>
+                      <ProductCard
+                        id={id}
+                        title={title}
+                        image={image}
+                        price={price}
+                        orders={rating.count}
+                        className=""
+                      />
+                    </Link>
+                  </div>
                 )
               })}
           </div>
