@@ -20,6 +20,7 @@ const ProductsList = ({ priceValue }) => {
 
   const searchParams = useSearchParams()
   const categoriesToFilter = searchParams.get('category')
+  const categoriesToFilterArray = categoriesToFilter ? categoriesToFilter.split(',') : []
 
   const minPrice = priceValue[0]
   const maxPrice = priceValue[1]
@@ -76,12 +77,12 @@ const ProductsList = ({ priceValue }) => {
           <div className="flex w-full flex-wrap gap-4 px-32 mt-3.5 mb-12">
             {products
               .filter((p) => {
-                if (categoriesToFilter.length) {
+                if (categoriesToFilterArray.length) {
                   // Filter by both price and category when categories are checked
                   return (
                     p.price >= minPrice &&
                     p.price <= maxPrice &&
-                    categoriesToFilter.includes(p.category)
+                    categoriesToFilterArray.includes(p.category)
                   )
                 } else {
                   // Filter only by price when no categories are checked

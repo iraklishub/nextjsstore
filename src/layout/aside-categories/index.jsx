@@ -7,6 +7,7 @@ import Slider from '@mui/material/Slider'
 import Checkbox from '@mui/material/Checkbox'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCategories } from '@/src/redux/features/categories-slice'
+import { LoadingSpinner } from '@/src/components'
 
 const AsideCategories = ({ priceValue, setPriceValue, minPrice, maxPrice }) => {
   const [loading, setLoading] = useState(false)
@@ -89,11 +90,11 @@ const AsideCategories = ({ priceValue, setPriceValue, minPrice, maxPrice }) => {
       </div>
       <div className="flex flex-col mt-10">
         <span className="text-[#1F2937] text-xs">CATEGORIES</span>
-        <div className="flex flex-col">
-          {loading ? (
-            <span>...</span>
-          ) : (
-            categories.map((category) => (
+        {loading ? (
+          <LoadingSpinner className="w-full h-full flex justify-center items-center" />
+        ) : (
+          <div className="flex flex-col">
+            {categories.map((category) => (
               <label key={category} className="text-[10px] text-[#1F2937]">
                 <Checkbox
                   id={category}
@@ -104,9 +105,9 @@ const AsideCategories = ({ priceValue, setPriceValue, minPrice, maxPrice }) => {
                 />
                 {category}
               </label>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </aside>
   )

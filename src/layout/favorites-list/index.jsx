@@ -11,6 +11,7 @@ const FavoritesList = ({ priceValue }) => {
 
   const searchParams = useSearchParams()
   const categoriesToFilter = searchParams.get('category')
+  const categoriesToFilterArray = categoriesToFilter ? categoriesToFilter.split(',') : []
 
   const minPrice = priceValue[0]
   const maxPrice = priceValue[1]
@@ -28,12 +29,12 @@ const FavoritesList = ({ priceValue }) => {
             products
               .filter((p) => favorites.includes(p.id))
               .filter((p) => {
-                if (categoriesToFilter.length) {
+                if (categoriesToFilterArray.length) {
                   // Filter by both price and category when categories are checked
                   return (
                     p.price >= minPrice &&
                     p.price <= maxPrice &&
-                    categoriesToFilter.includes(p.category)
+                    categoriesToFilterArray.includes(p.category)
                   )
                 } else {
                   // Filter only by price when no categories are checked

@@ -12,7 +12,7 @@ const HeartIcon = ({ className, fill, stroke }) => (
       stroke={stroke || '#41587B'} // color
       strokeWidth="1.50635"
       strokeLinecap="round"
-      stroke-linejoin="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
