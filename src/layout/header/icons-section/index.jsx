@@ -29,9 +29,16 @@ const HeaderIconsSection = () => {
             <ProfileIcon />
           </button>
         )}
-        <Link href="/cart" className="ml-4 h-fit">
-          <CartIcon />
-        </Link>
+        {isLogedIn ? (
+          <Link href="/cart" className="ml-4 h-fit">
+            <CartIcon />
+          </Link>
+        ) : (
+          <button type="button" className="ml-4 h-fit" onClick={() => setModalOpen(true)}>
+            <CartIcon />
+          </button>
+        )}
+
         {isLogedIn && (
           <Link
             href={{
