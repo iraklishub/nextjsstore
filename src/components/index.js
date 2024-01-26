@@ -6,6 +6,7 @@ export { default as LoadingSpinner } from './loading-spinner'
 export { default as PagePagination } from './page-pagination'
 export { default as Field } from './field'
 export { default as ToggleFavorite } from './toggle-favorite'
+export { default as SlickSlider } from './slider'
 
 // Icons
 export { default as CartIcon } from './icons/cartIcon'

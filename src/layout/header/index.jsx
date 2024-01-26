@@ -8,7 +8,7 @@ const roboto = Roboto({ weight: '400', subsets: ['latin'], display: 'swap' })
 
 const Header = () => {
   return (
-    <header className="flex justify-around items-center w-[1440px] h-[76px]">
+    <header className="flex justify-around items-center w-[1440px] h-[76px] border-b">
       <Link href="/">
         <Image src={logo} width={126} height={34} alt="logo" />
       </Link>

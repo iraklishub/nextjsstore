@@ -6,45 +6,15 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCategories } from '@/src/redux/features/categories-slice'
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
-import { CategoriesSliderSkeleton } from '@/src/skeletons'
+import { SlickSlider } from '@/src/components'
+import { SliderSkeleton } from '@/src/skeletons'
 
-import { ArrowIcon } from '@/src/components'
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
+const settings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1
 }
-
-const CustomLeftArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className="absolute left-0 w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center shadow-sm shadow-gray-500"
-  >
-    <ArrowIcon className="rotate-180" />
-  </button>
-)
-const CustomRightArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className="absolute right-0 w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center shadow-sm shadow-gray-500"
-  >
-    <ArrowIcon />
-  </button>
-)
 
 const CategoriesSlider = ({ className }) => {
   const [loading, setLoading] = useState(false)
@@ -73,22 +43,11 @@ const CategoriesSlider = ({ className }) => {
   return (
     <section className={`w-full text-center flex flex-col items-center ${className}`}>
       <h2 className="text-[#41587B] text-4xl">Categories</h2>
-      <div className="mt-16">
+      <div className="w-full mt-16 px-20">
         {loading ? (
-          <CategoriesSliderSkeleton />
+          <SliderSkeleton />
         ) : (
-          <Carousel
-            responsive={responsive}
-            infinite
-            keyBoardControl
-            autoPlay={false}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={['tablet', 'mobile']}
-            customLeftArrow={<CustomLeftArrow />}
-            customRightArrow={<CustomRightArrow />}
-            slidesToSlide={1}
-            className="h-fit w-[1200px]"
-          >
+          <SlickSlider settings={settings} className="relative px-14">
             {categories.map((category) => (
               <Link
                 href={{
@@ -103,7 +62,7 @@ const CategoriesSlider = ({ className }) => {
                 </div>
               </Link>
             ))}
-          </Carousel>
+          </SlickSlider>
         )}
       </div>
     </section>

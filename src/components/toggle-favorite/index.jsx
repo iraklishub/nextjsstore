@@ -1,12 +1,13 @@
 'use client'
 
+import clsx from 'clsx'
 import { useState } from 'react'
 import { HeartIcon } from '..'
 import { useSelector, useDispatch } from 'react-redux'
 import { addFavorite, removeFavorite } from '@/src/redux/features/favorites-slice'
 import { AuthModal } from '@/src/layout'
 
-const ToggleFavorite = ({ id }) => {
+const ToggleFavorite = ({ id, className }) => {
   const [authModalOpen, setAuthModalOpen] = useState(false)
 
   const dispatch = useDispatch()
@@ -32,7 +33,10 @@ const ToggleFavorite = ({ id }) => {
       <button
         type="button"
         onClick={handleFavoriteToggle}
-        className="absolute right-3 top-3 w-[36px] h-[36px] p-2 bg-[#000000]/30 hover:bg-[#000000]/70 flex items-center justify-center z-10"
+        className={clsx(
+          'absolute right-3 top-3 w-[36px] h-[36px] p-2 bg-[#000000]/30 hover:bg-[#000000]/70 flex items-center justify-center z-10',
+          className
+        )}
       >
         <HeartIcon
           fill={isLogedIn && isFavorite && 'red'}

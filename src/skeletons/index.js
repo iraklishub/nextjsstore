@@ -1,1 +1,1 @@
-export { default as CategoriesSliderSkeleton } from './categories-slider-skeleton'
+export { default as SliderSkeleton } from './slider-skeleton'
