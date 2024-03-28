@@ -8,6 +8,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCategories } from '@/src/redux/features/categories-slice'
 import { SlickSlider } from '@/src/components'
 import { SliderSkeleton } from '@/src/skeletons'
+import exclusiveShoesImage from '@/public/images/exclusiveshoes.jpg'
+import stylesCollectionsImage from '@/public/images/stylescollections.jpg'
+import newArrivalsImage from '@/public/images/newarivals.jpg'
+import exclusiveItemsImage from '@/public/images/exclusiveitems.jpg'
 
 const settings = {
   infinite: true,
@@ -21,6 +25,8 @@ const CategoriesSlider = ({ className }) => {
 
   const categories = useSelector((state) => state.categoriesReducer.value)
   const dispatch = useDispatch()
+
+  const images = [exclusiveShoesImage, stylesCollectionsImage, newArrivalsImage, exclusiveItemsImage]
 
   useEffect(() => {
     setLoading(true)
@@ -48,20 +54,23 @@ const CategoriesSlider = ({ className }) => {
           <SliderSkeleton />
         ) : (
           <SlickSlider settings={settings} className="relative px-14">
-            {categories.map((category) => (
-              <Link
-                href={{
-                  pathname: '/products',
-                  query: { category }
-                }}
-                key={category}
-              >
-                <div className="flex flex-col items-center">
-                  <Image src={undefined} width={230} height={140} alt="image" />
-                  <span className="mt-5 text-2xl font-medium tracking-[5px]">{category}</span>
-                </div>
-              </Link>
-            ))}
+            {categories.map((c, index) => {
+              const category = { name: c, image: images[index] }
+              return (
+                <Link
+                  href={{
+                    pathname: '/products',
+                    query: { category: category.name }
+                  }}
+                  key={category.name}
+                >
+                  <div className="flex flex-col items-center">
+                    <Image src={category.image} width={230} height={140} alt="image" className='h-[140px]'/>
+                    <span className="mt-5 text-2xl font-medium tracking-[5px]">{category.name}</span>
+                  </div>
+                </Link>
+              )
+            })}
           </SlickSlider>
         )}
       </div>
