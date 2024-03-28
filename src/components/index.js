@@ -1,5 +1,6 @@
 // Components
 export { default as Button } from './button'
+export { default as Badge } from './badge'
 export { default as Timer } from './timer'
 export { default as ProductCard } from './product-card'
 export { default as LoadingSpinner } from './loading-spinner'

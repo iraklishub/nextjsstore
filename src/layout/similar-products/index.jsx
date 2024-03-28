@@ -40,7 +40,7 @@ const SimilarProducts = () => {
   }, [])
 
   return (
-    <div className="w-full h-fit flex flex-col pl-32 mt-28">
+    <div className="w-full h-fit flex flex-col pl-32 mt-28 mb-12">
       <span className="text-[#41587B] text-2xl">Similar products</span>
       {loading ? (
         <SliderSkeleton />
@@ -52,7 +52,7 @@ const SimilarProducts = () => {
 
               return (
                 <div key={id} className="relative">
-                  <ToggleFavorite id={id} className="top-2.5 right-12" />
+                  <ToggleFavorite id={id} className="top-[0.5rem] right-[3rem]" />
                   <Link href={`${id}`}>
                     <ProductCard
                       id={id}

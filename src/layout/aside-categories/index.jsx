@@ -94,18 +94,22 @@ const AsideCategories = ({ priceValue, setPriceValue, minPrice, maxPrice }) => {
           <LoadingSpinner className="w-full h-full flex justify-center items-center" />
         ) : (
           <div className="flex flex-col">
-            {categories.map((category) => (
-              <label key={category} className="text-[10px] text-[#1F2937]">
-                <Checkbox
-                  id={category}
-                  name={category}
-                  key={category}
-                  checked={categoriesToFilter.includes(category)}
-                  onChange={(e) => handleCheckedChange(e.target.checked, category)}
-                />
-                {category}
-              </label>
-            ))}
+            {categories.map((category) => {
+              const isCategoryChecked = categoriesToFilter.split(",").map(cat => cat.trim()).includes(category)
+              
+              return (
+                <label key={category} className="text-[10px] text-[#1F2937]">
+                  <Checkbox
+                    id={category}
+                    name={category}
+                    key={category}
+                    checked={isCategoryChecked}
+                    onChange={(e) => handleCheckedChange(e.target.checked, category)}
+                  />
+                  {category}
+                </label>
+              )
+            })}
           </div>
         )}
       </div>
