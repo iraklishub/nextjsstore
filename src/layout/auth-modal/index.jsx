@@ -26,8 +26,8 @@ const AuthModal = ({ open, onClose }) => {
   const [loading, setloading] = useState(false)
   const dispatch = useDispatch()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('test@test.test')
+  const [password, setPassword] = useState('testPassword')
 
   const submitForm = async (e) => {
     e.preventDefault()
